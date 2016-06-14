@@ -1,6 +1,6 @@
 <?php
 
-namespace Soap\Thailand\Provinces;
+namespace Soap\ThProvinces\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -38,7 +38,7 @@ class MigrationCommand extends Command {
     public function fire()
     {
         $this->line('');
-        $this->info('Welcome to package soap/laravel-thailand-provinces');
+        $this->info('Welcome to package soap/thailand-provinces');
         $this->line('');
         $this->info('The migration file will create a table provinces and a seeder for the provinces data');
         $this->line('');

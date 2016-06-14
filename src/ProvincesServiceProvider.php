@@ -3,6 +3,7 @@
 namespace Soap\ThProvinces;
 
 use Soap\ThProvinces\Provinces\Provinces;
+use Soap\ThProvinces\Commands\MigrationCommand;
 use Illuminate\Support\ServiceProvider;
 
 class ProvincesServiceProvider extends ServiceProvider
@@ -27,7 +28,24 @@ class ProvincesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom( __DIR__.'/Config/thprovinces.php', 'ThProvinces');
+        $this->registerProvinces();
+        $this->registerCommands();
+    }
+
+    protected function registerProvinces()
+    {
         $this->app['ThProvinces'] = $this->app->share(function($app) {
             return new Provinces;
-        });    }
+        });
+    }
+
+    protected function registerCommands()
+    {
+        $this->app['command.provinces.migration'] = $this->app->share(function($app)
+        {
+            return new MigrationCommand($app);
+        });
+
+        $this->commands('command.provinces.migration');
+    }
 }
