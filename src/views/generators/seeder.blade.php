@@ -1,6 +1,7 @@
-<?php
+<?php echo '<?php' ?>
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Seeder;
 
 class ProvincesSeeder extends Seeder {
 
@@ -12,16 +13,16 @@ class ProvincesSeeder extends Seeder {
     public function run()
     {
         //Empty the provinces table
-        DB::table(\Config::get('laravel-thailand-provinces::provinces_table'))->delete();
+        DB::table(\Config::get('thailand-provinces::provinces_table'))->delete();
 
         //Get all of the provinces
         $provinces = Provinces::getList();
-        foreach ($provinces as $provinceId => $province){
-            DB::table(\Config::get('laravel-thailand-provinces::provinces_table'))->insert(array(
-                    'id' => $provinceId,
-                    'country_id' => $province['country_id'],
-                    'name' => $province['name'],
-                    'capital' => isset($province['capital']) ? $province['capital'] : null,
+        foreach ($provinces as $province){
+            DB::table(\Config::get('thailand-provinces::provinces_table'))->insert(array(
+                    'id' => $provinces['id'],
+                    'name_th' => $province['name_th'],
+                    'name_en' => $province['name_en'],
+                    'geography_id' => $province['geography_id']
             ));
         }
     }

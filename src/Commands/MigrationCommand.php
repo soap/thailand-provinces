@@ -3,6 +3,7 @@
 namespace Soap\ThProvinces\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -37,26 +38,31 @@ class MigrationCommand extends Command {
      */
     public function fire()
     {
+        $provincesTable = Config::get('thprovinces.provinces_table');
+
         $this->line('');
         $this->info('Welcome to package soap/thailand-provinces');
         $this->line('');
-        $this->info('The migration file will create a table provinces and a seeder for the provinces data');
+
+        $message =  "The migration file will create a table '$provincesTable'"." and a seeder for the provinces data";
+        $this->info($message);
+
         $this->line('');
-        if ( $this->confirm("Create migration file? [Yes|no]") )
+        if ( $this->confirm("Create migration file? [Yes|no]", true) )
         {
             $this->line('');
             $this->info( "Creating migration and seed file..." );
-            if( $this->createMigration( 'provinces' ) )
+            if( $this->createMigration($provincesTable))
             {
-                $this->line('');
-                $this->call('dump-autoload', array());
+                //$this->line('');
+                //$this->call('dump-autoload', array());
                 $this->line('');
                 $this->info( "Migration successfully created!" );
             }
             else{
                 $this->error(
                     "Error! Failed to create migration.\n Check the write permissions".
-                    " within the app/database/migrations directory."
+                    " within the /database/migrations directory."
                 );
             }
             $this->line('');
@@ -79,33 +85,35 @@ class MigrationCommand extends Command {
      * @param  string $name
      * @return bool
      */
-    protected function createMigration()
+    protected function createMigration($provincesTable)
     {
         //Create the migration
         $app = app();
-        $migrationFiles = array(
-            $this->laravel->path."/database/migrations/*_create_provinces_table.php" => 'provinces::generators.migration',
-        );
-        $seconds = 0;
-        foreach ($migrationFiles as $migrationFile => $outputFile) {
-            if (sizeof(glob($migrationFile)) == 0) {
-                $migrationFile = str_replace('*', date('Y_m_d_His', strtotime('+' . $seconds . ' seconds')), $migrationFile);
-                $fs = fopen($migrationFile, 'x');
-                if ($fs) {
-                    $output = "<?php\n\n" .$app['view']->make($outputFile)->with('table', 'provinces')->render();
-                    fwrite($fs, $output);
-                    fclose($fs);
-                } else {
-                    return false;
-                }
-                $seconds++;
+        $migration_file = database_path()."/migrations/".date('Y_m_d_His')."_create_provinces_table.php";
+
+
+        if (!file_exists($migration_file))
+        {
+            $fs = fopen($migration_file, 'x');
+
+            if ($fs) {
+                $data = compact('provincesTable');
+
+                $output = $app['view']->make('provinces::generators.migration')->with($data)->render();
+                fwrite($fs, $output);
+                fclose($fs);
+            } else {
+                return false;
             }
         }
+
         //Create the seeder
-        $seeder_file = $this->laravel->path."/database/seeds/ProvincesSeeder.php";
-        $output = "<?php\n\n" .$app['view']->make('provinces::generators.seeder')->render();
-        if (!file_exists( $seeder_file )) {
+        $seeder_file = database_path()."/seeds/ProvincesSeeder.php";
+
+        if (!file_exists( $seeder_file ))
+        {
             $fs = fopen($seeder_file, 'x');
+            $output = $app['view']->make('provinces::generators.seeder')->render();
             if ($fs) {
                 fwrite($fs, $output);
                 fclose($fs);
@@ -113,6 +121,7 @@ class MigrationCommand extends Command {
                 return false;
             }
         }
+
         return true;
     }
 }

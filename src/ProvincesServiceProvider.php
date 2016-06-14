@@ -27,14 +27,14 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom( __DIR__.'/Config/thprovinces.php', 'ThProvinces');
+        $this->mergeConfigFrom( __DIR__.'/Config/thprovinces.php', 'thprovinces');
         $this->registerProvinces();
         $this->registerCommands();
     }
 
     protected function registerProvinces()
     {
-        $this->app['ThProvinces'] = $this->app->share(function($app) {
+        $this->app['thprovinces'] = $this->app->share(function($app) {
             return new Provinces;
         });
     }
