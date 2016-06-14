@@ -1,0 +1,25 @@
+{
+    "name": "soap/thailand-provinces",
+    "description": "Thailand provinces database as Laravel package",
+    "type": "laravel-package",
+    "keyword" : ["laravel", "thailand", "provinces", "database"],
+    "require": {
+        "illuminate/support": "5.x"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prasit Gebsaap",
+            "email": "prasit.gebsaap@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Soap\\ThProvinces\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
