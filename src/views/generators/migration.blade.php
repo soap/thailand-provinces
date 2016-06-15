@@ -14,10 +14,9 @@ class CreateProvincesTable extends Migration
     public function up()
     {
         // Creates the provinces table
-        Schema::create('{{ $provincesTable }}', function(Blueprint $table)
+        Schema::create(\Config::get('thprovinces.provinces_table'), function(Blueprint $table)
         {
             $table->integer('id')->index();
-            $table->code('country_id');
             $table->string('name_th', 255);
             $table->string('name_en', 255);
             $table->unsignedInteger('geography_id');
@@ -33,7 +32,7 @@ class CreateProvincesTable extends Migration
     */
     public function down()
     {
-        Schema::drop('{{ $provincesTable }}');
+        Schema::drop(\Config::get('thprovinces.provinces_table'));
     }
 
 }
