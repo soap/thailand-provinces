@@ -17,7 +17,7 @@ class ProvincesServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/Config/thprovinces.php' => config_path('thprovinces.php'),
-        ], 'config');
+        ], 'thprovinces');
     }
 
     /**
