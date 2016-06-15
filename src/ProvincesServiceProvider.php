@@ -65,6 +65,6 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('countries');
+        return array('provinces');
     }
 }

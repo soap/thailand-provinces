@@ -24,5 +24,14 @@
             "Soap\\ThProvinces\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Soap\\ThProvinces\\": "packages/soap/thailand-provinces/src"
+        },
+        "classmap": [
+            "tests/DbTestCase.php",
+            "tests/ProvincesTest.php"
+        ]
+    },
     "minimum-stability": "stable"
 }

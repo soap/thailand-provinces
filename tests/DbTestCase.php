@@ -1,6 +1,9 @@
 <?php
 
 use \Illuminate\Foundation\Testing\TestCase;
+use \Illuminate\Filesystem\Filesystem;
+use \Illuminate\FileSystem\ClassFinder;
+use Illuminate\Support\Facades\Config;
 
 abstract class DbTestCase extends TestCase
 {
@@ -13,7 +16,7 @@ abstract class DbTestCase extends TestCase
     {
         $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
 
-        $app->register('/packages/soap/thailand-provinces/src/ProvincesServiceProvider');
+        $app->register(Soap\ThProvinces\ProvincesServiceProvider::class);
 
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
@@ -32,7 +35,7 @@ abstract class DbTestCase extends TestCase
         $this->app['config']->set('database.default','sqlite');
         $this->app['config']->set('database.connections.sqlite.database', ':memory:');
 
-        $this->migrate();
+        //$this->migrate();
     }
 
     /**
