@@ -32,6 +32,12 @@ class ProvincesServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
 
+    /**
+     *
+     * Register the service provider.
+     *
+     * @return \Soap\ThProvinces\Provinces\Provinces
+     */
     protected function registerProvinces()
     {
         $this->app['thprovinces'] = $this->app->share(function($app) {
@@ -39,6 +45,9 @@ class ProvincesServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Register the artisan command
+     */
     protected function registerCommands()
     {
         $this->app['command.provinces.migration'] = $this->app->share(function($app)
@@ -47,5 +56,15 @@ class ProvincesServiceProvider extends ServiceProvider
         });
 
         $this->commands('command.provinces.migration');
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return array('countries');
     }
 }

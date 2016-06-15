@@ -17,7 +17,7 @@ class Provinces extends \Eloquent
      */
     public function __construct()
     {
-        $this->table = \Config::get('thailand-provinces::provinces_table');
+        $this->table = \Config::get('thprovinces.provinces_table');
     }
 
     /**

@@ -13,13 +13,13 @@ class ProvincesSeeder extends Seeder {
     public function run()
     {
         //Empty the provinces table
-        DB::table(\Config::get('thailand-provinces::provinces_table'))->delete();
+        DB::table(\Config::get('thprovinces.provinces_table'))->delete();
 
         //Get all of the provinces
         $provinces = Provinces::getList();
         foreach ($provinces as $province){
-            DB::table(\Config::get('thailand-provinces::provinces_table'))->insert(array(
-                    'id' => $provinces['id'],
+            DB::table(\Config::get('thprovinces.provinces_table'))->insert(array(
+                    'id' => $province['id'],
                     'name_th' => $province['name_th'],
                     'name_en' => $province['name_en'],
                     'geography_id' => $province['geography_id']
