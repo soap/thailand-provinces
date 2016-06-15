@@ -40,7 +40,7 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     protected function registerProvinces()
     {
-        $this->app['thprovinces'] = $this->app->share(function($app) {
+        $this->app['ThPrrovinces'] = $this->app->share(function($app) {
             return new Provinces;
         });
     }
