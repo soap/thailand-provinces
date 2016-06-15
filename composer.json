@@ -10,7 +10,7 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "laracasts/testdummy": "~2.0",
-        "laravel/laravel": "dev-develop"
+        "laravel/laravel": "5.2.x"
     },
     "license": "MIT",
     "authors": [
@@ -23,6 +23,15 @@
         "psr-4": {
             "Soap\\ThProvinces\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Soap\\ThProvinces\\": "packages/soap/thailand-provinces/src"
+        },
+        "classmap": [
+            "tests/DbTestCase.php",
+            "tests/ProvincesTest.php"
+        ]
     },
     "minimum-stability": "stable"
 }
