@@ -8,7 +8,7 @@ class Provinces extends Facade {
 
     protected static function getFacadeAccessor()
     {
-        return 'thprovinces';
+        return 'ThProvinces';
     }
 
 }
