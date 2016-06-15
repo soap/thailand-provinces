@@ -31,6 +31,7 @@ class MigrationCommand extends Command {
         $app = app();
         $app['view']->addNamespace('provinces',substr(__DIR__,0,-8).'views');
     }
+
     /**
      * Execute the console command.
      *

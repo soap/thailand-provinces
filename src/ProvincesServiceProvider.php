@@ -8,6 +8,11 @@ use Illuminate\Support\ServiceProvider;
 
 class ProvincesServiceProvider extends ServiceProvider
 {
+
+    protected $commands = [
+        'Soap\ThProvices\Commands\MigrationCommand'
+    ];
+
     /**
      * Bootstrap the application services.
      *
@@ -65,6 +70,6 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('provinces');
+        return array('ThProvinces');
     }
 }
