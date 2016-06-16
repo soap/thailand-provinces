@@ -8,6 +8,9 @@ use Illuminate\Support\ServiceProvider;
 
 class ProvincesServiceProvider extends ServiceProvider
 {
+
+    protected $defered = false;
+
     /**
      * Bootstrap the application services.
      *
@@ -40,7 +43,7 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     protected function registerProvinces()
     {
-        $this->app['ThPrrovinces'] = $this->app->share(function($app) {
+        $this->app['thprovinces'] = $this->app->share(function($app) {
             return new Provinces;
         });
     }
@@ -50,12 +53,12 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     protected function registerCommands()
     {
-        $this->app['command.provinces.migration'] = $this->app->share(function($app)
+        $this->app['command.thprovinces.migration'] = $this->app->share(function($app)
         {
             return new MigrationCommand($app);
         });
 
-        $this->commands('command.provinces.migration');
+        $this->commands('command.thprovinces.migration');
     }
 
     /**
@@ -65,6 +68,6 @@ class ProvincesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('provinces');
+        return array('thprovinces');
     }
 }
