@@ -16,7 +16,7 @@ class ProvincesSeeder extends Seeder {
         DB::table(\Config::get('thprovinces.provinces_table'))->delete();
 
         //Get all of the provinces
-        $provinces = Provinces::getList();
+        $provinces = ThProvinces::getList();
         foreach ($provinces as $province){
             DB::table(\Config::get('thprovinces.provinces_table'))->insert(array(
                     'id' => $province['id'],
