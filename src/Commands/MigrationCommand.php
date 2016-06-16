@@ -13,7 +13,7 @@ class MigrationCommand extends Command {
      *
      * @var string
      */
-    protected $name = 'provinces:migration';
+    protected $name = 'thprovinces:migration';
     /**
      * The console command description.
      *
@@ -29,7 +29,7 @@ class MigrationCommand extends Command {
     {
         parent::__construct();
         $app = app();
-        $app['view']->addNamespace('provinces',substr(__DIR__,0,-8).'views');
+        $app['view']->addNamespace('thprovinces',substr(__DIR__,0,-8).'views');
     }
 
     /**
@@ -100,7 +100,7 @@ class MigrationCommand extends Command {
             if ($fs) {
                 $data = compact('provincesTable');
 
-                $output = $app['view']->make('provinces::generators.migration')->with($data)->render();
+                $output = $app['view']->make('thprovinces::generators.migration')->with($data)->render();
                 fwrite($fs, $output);
                 fclose($fs);
             } else {
@@ -114,7 +114,7 @@ class MigrationCommand extends Command {
         if (!file_exists( $seeder_file ))
         {
             $fs = fopen($seeder_file, 'x');
-            $output = $app['view']->make('provinces::generators.seeder')->render();
+            $output = $app['view']->make('thprovinces::generators.seeder')->render();
             if ($fs) {
                 fwrite($fs, $output);
                 fclose($fs);
