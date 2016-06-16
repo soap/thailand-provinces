@@ -36,11 +36,11 @@ You can start by publishing the configuration. This is an optional step, it cont
 
 Next generate the migration file:
 
-    $ php artisan provinces:migration
+    $ php artisan thprovinces:migration
     
 It will generate the `<timestamp>_create_provinces_table.php` migration and the `ProvincesSeeder.php` seeder. To make sure the data is seeded insert the following code in the `seeds/DatabaseSeeder.php`
 
-    //Seed the countries
+    //Seed the provinces
     $this->call('ProvincesSeeder');
     $this->command->info('Seeded Thailand provinces!'); 
 
