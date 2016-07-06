@@ -1,5 +1,6 @@
 # Laravel Thailand Provinces
 Thailand provinces data for Laravel
+
 [![Build Status](https://travis-ci.org/soap/thailand-provinces.svg?branch=master)](https://travis-ci.org/soap/thailand-provinces.svg?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/soap/thailand-provinces/v/stable)](https://packagist.org/packages/soap/thailand-provinces)
 [![Total Downloads](https://poser.pugx.org/soap/thailand-provinces/downloads)](https://packagist.org/packages/soap/thailand-provinces)
