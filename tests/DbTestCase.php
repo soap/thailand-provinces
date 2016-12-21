@@ -1,9 +1,10 @@
 <?php
 
+
 use \Illuminate\Foundation\Testing\TestCase;
 use \Illuminate\Filesystem\Filesystem;
 use \Illuminate\FileSystem\ClassFinder;
-use Illuminate\Support\Facades\Config;
+use \Illuminate\Support\Facades\Config;
 
 abstract class DbTestCase extends TestCase
 {

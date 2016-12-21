@@ -1,11 +1,12 @@
 <?php
 
 
-class ProvincesTest extends DbTestCase
+class ProvincesTest extends TestCase
 {
 
     public function testSomethingIsTrue()
     {
         $this->assertTrue(true);
     }
+
 }

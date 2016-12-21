@@ -10,7 +10,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "laracasts/testdummy": "~2.0",
-        "laravel/laravel": "5.2.x"
+        "laravel/laravel": "5.3.x",
+        "orchestra/testbench": "~3.0"
     },
     "license": "MIT",
     "authors": [
@@ -29,6 +30,7 @@
             "Soap\\ThProvinces\\": "packages/soap/thailand-provinces/src"
         },
         "classmap": [
+            "tests/TestCase.php",
             "tests/DbTestCase.php",
             "tests/ProvincesTest.php"
         ]
