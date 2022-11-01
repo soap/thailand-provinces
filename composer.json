@@ -33,5 +33,10 @@
             "tests/ProvincesTest.php"
         ]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
 }
